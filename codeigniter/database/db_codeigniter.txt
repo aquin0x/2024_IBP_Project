@@ -1,0 +1,146 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Anamakine: 127.0.0.1
+-- Üretim Zamanı: 08 Haz 2024, 18:23:20
+-- Sunucu sürümü: 10.4.32-MariaDB
+-- PHP Sürümü: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Veritabanı: `db_codeigniter`
+--
+CREATE DATABASE IF NOT EXISTS `db_codeigniter` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `db_codeigniter`;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `announcements`
+--
+
+CREATE TABLE `announcements` (
+  `id` int(11) NOT NULL,
+  `announcement` varchar(500) DEFAULT NULL,
+  `record_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `message`
+--
+
+CREATE TABLE `message` (
+  `ID` int(11) NOT NULL,
+  `message` varchar(500) DEFAULT NULL,
+  `received_by` int(11) DEFAULT NULL,
+  `sent_by` int(11) DEFAULT NULL,
+  `record_date` datetime DEFAULT NULL,
+  `is_read` int(11) DEFAULT NULL,
+  `admin_message` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `message`
+--
+
+INSERT INTO `message` (`ID`, `message`, `received_by`, `sent_by`, `record_date`, `is_read`, `admin_message`) VALUES
+(16, 'Merhaba Admin Kardeş', 6, 11, '2024-06-08 17:43:06', 1, 'Merhabalar mumın'),
+(17, 'örnek', 6, 11, '2024-06-08 17:43:33', 1, 'ert'),
+(18, 'örnek mesaj', 6, 11, '2024-06-08 18:03:57', NULL, NULL),
+(19, 'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 6, 11, '2024-06-08 18:07:39', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `products`
+--
+
+CREATE TABLE `products` (
+  `ID` int(11) NOT NULL,
+  `product_name` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `users`
+--
+
+CREATE TABLE `users` (
+  `ID` int(11) NOT NULL,
+  `full_name` varchar(50) NOT NULL,
+  `email` varchar(500) NOT NULL,
+  `password` text NOT NULL,
+  `is_admin` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `users`
+--
+
+INSERT INTO `users` (`ID`, `full_name`, `email`, `password`, `is_admin`) VALUES
+(6, 'Alperen Sevinç', 'alperensevinc99@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1),
+(11, 'Onur Can  Canca', 'test1@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 0);
+
+--
+-- Dökümü yapılmış tablolar için indeksler
+--
+
+--
+-- Tablo için indeksler `announcements`
+--
+ALTER TABLE `announcements`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Tablo için indeksler `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Tablo için indeksler `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Dökümü yapılmış tablolar için AUTO_INCREMENT değeri
+--
+
+--
+-- Tablo için AUTO_INCREMENT değeri `announcements`
+--
+ALTER TABLE `announcements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `message`
+--
+ALTER TABLE `message`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `products`
+--
+ALTER TABLE `products`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `users`
+--
+ALTER TABLE `users`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+COMMIT;
